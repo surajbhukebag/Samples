@@ -9,6 +9,7 @@ class Item extends Component {
 
 	render() {
 		
+
     return (
 
 			<div className="panel panel-default">
@@ -16,11 +17,14 @@ class Item extends Component {
           {this.props.name !== undefined && isNaN(this.props.name) ?
             <div className="row panel-body">
               <div className="col-xs-7"><strong>{this.props.name.split(',')[0]}</strong></div>
-              <div className="col-xs-2"><strong>{this.props.name.split(',')[1]}</strong></div>
+              <div className="col-xs-2"><strong>{this.props.name.split(',')[1]}</strong>
+                {this.props.source === 'remove' ? <span> Qty {this.props.name.split(',')[2]}</span> : '' }
+
+              </div>
 
               {this.props.source === 'add' ?
                 <div className="col-xs-3"><button onClick={() => {
-                                      this.props.addToOrder(this.props.name);}}><strong>Add</strong></button></div> :
+                                      this.props.addToOrder(this.props.name+',1');}}><strong>Add</strong></button></div> :
 
                 <div className="col-xs-3"><button onClick={() => {
                                       this.props.removeFromOrder(this.props.name);}}><strong>Remove</strong></button></div>
